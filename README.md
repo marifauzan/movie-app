@@ -1,6 +1,6 @@
-# MovieApp
+# Movie App
 
-The movie web-based application is a sleek and user-friendly platform that allows users to easily search for, browse and explore different movies. The app is built using Vue.js, which is a popular open-source JavaScript framework that provides efficient and fast rendering capabilities. The use of Vue.js ensures that the app loads quickly and offers seamless navigation.
+[Movie App](https://movie-jobhun.netlify.app/) web-based application is a sleek and user-friendly platform that allows users to easily search for, browse and explore different movies. The app is built using Vue.js, which is a popular open-source JavaScript framework that provides efficient and fast rendering capabilities. The use of Vue.js ensures that the app loads quickly and offers seamless navigation.
 
 Tailwind is a utility-first CSS framework used in the design and development of the movie web application. It provides a collection of pre-designed CSS classes that can be applied to the HTML code, making it easier to create a consistent and visually appealing user interface. The use of Tailwind ensures that the app looks great on different devices and screen sizes.
 
