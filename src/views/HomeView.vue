@@ -1,6 +1,25 @@
-<script setup>
-import moment from 'moment'
-import datas from '../assets/movie.json';
+<script>
+import moment from 'moment';
+import axios from 'axios';
+
+export default {
+  name: "Home",
+  data() {
+    return {
+      movies: [],
+    }
+  },
+  methods: {
+    yearFormatDate: (date) => {
+      return moment(date).format('YYYY');
+    },
+  },
+  async mounted() {
+    let result = await axios.get("http://api.tvmaze.com/search/shows?q=girls");
+    console.log()
+    this.movies = result.data;
+  },
+}
 </script>
 
 <template>
@@ -39,17 +58,17 @@ import datas from '../assets/movie.json';
       <h1 class="font-bold text-2xl">Popular Movie</h1>
 
       <div class="mt-3 flex flex-wrap">
-        <div :key="data.show.id" class="mr-10 my-5" v-for="data in datas ">
-          <img class="h-[240px] w-[160px] shadow-2xl rounded-lg" :src='data.show.image.original' alt="" />
-          <p class="mt-4 font-medium text-xl">{{ data.show.name }}</p>
+        <div :key="movie.show.id" class="mr-10 my-5" v-for="movie in movies ">
+          <img class="h-[240px] w-[160px] shadow-2xl rounded-lg" :src='movie.show.image.original' alt="" />
+          <p class="mt-4 font-medium text-xl">{{ movie.show.name }}</p>
           <div class="flex justify-between">
-            <p class="font-base text-sm">{{ moment(data.show.premiered).format("YYYY") }}</p>
+            <p class="font-base text-sm">{{ yearFormatDate(movie.show.premiered) }}</p>
             <div class="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6 fill-yellow-300">
                 <path stroke-linecap="round" stroke-linejoin="round"
                   d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
               </svg>
-              <p class="ml-2 font-base text-sm">{{ data.show.rating.average }}</p>
+              <p class="ml-2 font-base text-sm">{{ movie.show.rating.average }}</p>
             </div>
           </div>
         </div>
@@ -59,3 +78,7 @@ import datas from '../assets/movie.json';
     <!-- End: Movie -->
   </main>
 </template>
+
+
+
+
