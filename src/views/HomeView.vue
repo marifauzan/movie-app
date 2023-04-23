@@ -16,7 +16,6 @@ export default {
   },
   async mounted() {
     let result = await axios.get("http://api.tvmaze.com/search/shows?q=girls");
-    console.log()
     this.movies = result.data;
   },
 }
